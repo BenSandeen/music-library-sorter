@@ -1,1 +1,10 @@
-{}
+{
+  "test_sortMusic.py::TestClass::()::test_eight": true, 
+  "test_sortMusic.py::TestClass::()::test_five": true, 
+  "test_sortMusic.py::TestClass::()::test_four": true, 
+  "test_sortMusic.py::TestClass::()::test_one": true, 
+  "test_sortMusic.py::TestClass::()::test_seven": true, 
+  "test_sortMusic.py::TestClass::()::test_six": true, 
+  "test_sortMusic.py::TestClass::()::test_three": true, 
+  "test_sortMusic.py::TestClass::()::test_two": true
+}
