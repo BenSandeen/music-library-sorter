@@ -40,7 +40,7 @@ class SortMusicFiles:
         directory at some point, but not now"""
         if self.musicFilesLocation == "":
             raise IOError
-            return IOError
+            # return IOError
 
         musicFileExtensions = ['.3gp', '.aa', '.aac', '.aax', '.act', '.aiff', '.amr',
                                '.ape', '.au', '.awb', '.dct', '.dss', '.dvf', '.flac',

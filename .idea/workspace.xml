@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="592bc17b-ab97-492e-ab06-0452bb8cd79c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.cache/v/cache/lastfailed" afterPath="$PROJECT_DIR$/.cache/v/cache/lastfailed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortMusicFiles.py" afterPath="$PROJECT_DIR$/sortMusicFiles.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_sortMusic.py" afterPath="$PROJECT_DIR$/test_sortMusic.py" />
     </list>
     <ignored path="music-library-sorter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +28,8 @@
           <file leaf-file-name="sortMusicFiles.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+                <state relative-caret-position="408">
+                  <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -97,8 +94,8 @@
       <list>
         <option value="$PROJECT_DIR$/sortMusic.py" />
         <option value="$PROJECT_DIR$/song.py" />
-        <option value="$PROJECT_DIR$/sortMusicFiles.py" />
         <option value="$PROJECT_DIR$/test_sortMusic.py" />
+        <option value="$PROJECT_DIR$/sortMusicFiles.py" />
       </list>
     </option>
   </component>
@@ -469,22 +466,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_sortMusic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="e#50#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
