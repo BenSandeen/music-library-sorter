@@ -20,16 +20,8 @@ class TestClass:
         assert self.song.getTrackNumber() == "No tracknumber info"
         assert self.song.getTrackTotal() == "No tracktotal info"
 
-    def setup(self):
-        """TODO: may need to use mocking or something to create an object.
-           Alternatively, you may just need to not initialize the self.musicLocation
-           variable when creating a SortMusicFiles object"""
-        sys.stdin.write("C://")
-        self.musicSorter = SM.SortMusicFiles()
-        sys.stdin.write("C://")
-
     def test_two(self):
-        pass
+        self.musicSorter = SM.SortMusicFiles()
 
     def test_three(self):
         pass
