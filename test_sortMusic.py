@@ -3,6 +3,8 @@
 import sortMusicFiles as SM
 import song as Song
 import sys
+import os
+import pytest
 
 class TestClass:
     """pytest automatically finds and runs these tests.  The class is effectively a means
@@ -32,11 +34,29 @@ class TestClass:
         self.musicSorter.resetObjectToDefault()
 
     def test_three(self):
-        """Tests getting user input"""
+        """Tests getting user input and setting data appropriately"""
+        path = "/mnt/c/Users/Ben/Music/Test OGG Music"
+        with pytest.raises(IOError):
+            self.musicSorter.findSongs()
+        self.musicSorter.setMusicFilesLocation(path + "/testing")
+        print(self.musicSorter.getMusicFilesLocation())
+        self.musicSorter.findSongs()
+        assert self.musicSorter.Songs != []
         self.musicSorter.resetObjectToDefault()
 
-    def test_four(self):
-        pass
+    def test_four(self, tmpdir):
+        """Tests sorting and writing files to directory"""
+        # location = "/mnt/c/Users/Ben/Documents/Computer Science/music_sorter/music-library-sorter"
+        # p = tmpdir.mkdir(location + "test_output").join("hello.txt")
+        p = tmpdir.mkdir("sub").join("hello.txt")
+        p.write("content")
+        # with open(tmpdir.mkdir("sub").join("hello.txt"),'w') as output:
+        #     output.write("test")
+        # with open("sub/hello.txt",'r') as f:
+        #     assert f.read() == "test"
+        assert len(tmpdir.listdir()) == 1
+
+        self.musicSorter.resetObjectToDefault()
 
     def test_five(self):
         pass

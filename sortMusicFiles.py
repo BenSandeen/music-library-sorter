@@ -34,13 +34,21 @@ class SortMusicFiles:
         return self.outputFilesLocation
 
     def findSongs(self):
-        """Searches musicFilesLocation for music files, then puts it in Songs list """
+        """Searches musicFilesLocation for music files, then puts it in Songs list
+
+        TODO: We will want to make it so that the program can recursively search a
+        directory at some point, but not now"""
+        if self.musicFilesLocation == "":
+            raise IOError
+            return IOError
+
         musicFileExtensions = ['.3gp', '.aa', '.aac', '.aax', '.act', '.aiff', '.amr',
                                '.ape', '.au', '.awb', '.dct', '.dss', '.dvf', '.flac',
                                '.gsm', '.iklax', '.ivs', '.m4a', '.m4b', '.m4p', '.mmf',
                                '.mp3', '.mpc', '.msv', '.ogg', '.oga', '.mogg', '.opus',
                                '.ra', '.rm', '.raw', '.sln', '.tta', '.vox', '.wav',
                                '.wma', '.wv', '.webm']
+        # dirQueue = [] # queue for holding directories, so we can recurse into them
         for thing in os.listdir(self.musicFilesLocation):
             for ext in musicFileExtensions:
                 if ext in thing:
