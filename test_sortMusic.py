@@ -5,6 +5,7 @@ import song as Song
 import sys
 import os
 import pytest
+import mutagen
 
 class TestClass:
     """pytest automatically finds and runs these tests.  The class is effectively a means
@@ -39,9 +40,9 @@ class TestClass:
         with pytest.raises(IOError):
             self.musicSorter.findSongs()
         self.musicSorter.setMusicFilesLocation(path + "/testing")
-        print(self.musicSorter.getMusicFilesLocation())
         self.musicSorter.findSongs()
         assert self.musicSorter.Songs != []
+        print(mutagen.File("/mnt/c/Users/Ben/Music/Test OGG Music/testing/[Mix] One and a half hours of future bass, nu funk, electro, ect.ogg"))
         self.musicSorter.resetObjectToDefault()
 
     def test_four(self, tmpdir):
