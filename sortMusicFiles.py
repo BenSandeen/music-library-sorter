@@ -39,10 +39,10 @@ class SortMusicFiles:
         return self.outputFilesLocation
 
     def findSongs(self):
-        """Searches musicFilesLocation for music files, then puts it in Songs list
-
-        TODO: We will want to make it so that the program can recursively search a
-        directory at some point, but not now"""
+        """Searches musicFilesLocation for music files, then puts it in Songs list"""
+        # TODO: We will want to make it so that the program can recursively search a
+        # TODO: directory at some point, but not now.  Probably use `os.walk`, which searches
+        # TODO: a directory recursively
         if self.musicFilesLocation == "":
             raise IOError
 
