@@ -2,6 +2,7 @@ import unicodedata as ud
 import song as Song
 import os
 import mutagen
+import shutil
 
 class SortMusicFiles:
     def __init__(self):
@@ -55,11 +56,11 @@ class SortMusicFiles:
         for thing in os.listdir(self.musicFilesLocation):
             for ext in musicFileExtensions:
                 if ext in thing:
-                    # this will need to append a song object in the future
+                    # TODO: give this song object the correct data members
                     newSong = Song.Song()
                     self.Songs.append(newSong)
 
-    def getFirstSortingCriteriaData(self, song):
+    def getSortingCriteriaDataByCriteriaPriority(self, song, priority):
         """Gets data from Song object according to the music file sorter's first
         sorting criteria"""
 
@@ -72,15 +73,109 @@ class SortMusicFiles:
                            "albumartist": song.getAlbumArtist, "title": song.getTitle,
                            "date": song.getDate, "tracknumber": song.getTrackNumber,
                            "tracktotal": song.getTrackTotal}
+        # use a list, since we'll pass in an int as the priority
+        criteriaByPriority = [self.firstSortingCriteria, self.secondSortingCriteria,
+                              self.thirdSortingCriteria]
+
         return switchStatement[self.firstSortingCriteria]()
 
     def moveSong(self, song):
         """Moves a single song.  Makes sure not to create a folder if one by the same
         name already exists"""
-        try:
-            os.mkdir(self.getOutputFilesLocation() + song.getFirstSortingCriteriaData())
-        except OSError as e:
-            print(e)
+        if self.thirdSortingCriteria != "":
+            try:
+                # TODO: split these lines up into separate try-excepts, because it is possible
+                # TODO: that it will succeed at making the dirs but fail at moving the file,
+                # TODO: and the code as it currently is would yield errors on the later
+                # TODO: try-excepts, because the directory would already exist
+                os.makedirs(self.musicFilesLocation + "/" +
+                         self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
+                         self.getSortingCriteriaDataByCriteriaPriority(song,1) + "/" +
+                         self.getSortingCriteriaDataByCriteriaPriority(song,2))
+
+                shutil.move(song.getFileLocation() + song.getFileName(),
+                            self.musicFilesLocation + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song, 1) + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song, 2))
+            except OSError as e:
+                pass
+
+        else:
+            try:
+                os.makedirs(self.musicFilesLocation + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song, 1))
+
+                shutil.move(song.getFileLocation() + song.getFileName(),
+                            self.musicFilesLocation + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song, 1))
+            except OSError as e:
+                # print(e)
+                pass
+
+            try:
+                os.makedirs(self.musicFilesLocation + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song, 0))
+
+                shutil.move(song.getFileLocation() + song.getFileName(),
+                            self.musicFilesLocation + "/" +
+                            self.getSortingCriteriaDataByCriteriaPriority(song, 0))
+            except OSError as e:
+                pass
+
+            try:
+                os.makedirs(self.musicFilesLocation)
+
+                shutil.move(song.getFileLocation() + song.getFileName(),self.musicFilesLocation)
+            except OSError as e:
+                print(e)
+                return
+
+
+        #     shutil.move(song.getFileLocation() + song.getFileName(), self.musicFilesLocation + "/" +
+        #                     self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
+        #                     self.getSortingCriteriaDataByCriteriaPriority(song,1) + "/" +
+        #                     self.getSortingCriteriaDataByCriteriaPriority(song,2))
+        #         shutil.move(song.getFileLocation() + song.getFileName(), self.musicFilesLocation + "/" +
+        #                     self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
+        #                     self.getSortingCriteriaDataByCriteriaPriority(song, 1))
+        # else:
+        #     # print(e)
+        #     shutil.move(song.getFileLocation() + song.getFileName(), self.musicFilesLocation + "/" +
+        #                 self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
+        #                 self.getSortingCriteriaDataByCriteriaPriority(song, 1))
+        #
+        # # if all directories have been made successfully
+        # if os.access(self.musicFilesLocation + "/" +
+        #              self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
+        #              self.getSortingCriteriaDataByCriteriaPriority(song,1) + "/" +
+        #              self.getSortingCriteriaDataByCriteriaPriority(song,2), os.F_OK):
+        #     shutil.move(song.getFileLocation() + song.getFileName(),
+        #                 self.musicFilesLocation + "/" +
+        #                 self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
+        #                 self.getSortingCriteriaDataByCriteriaPriority(song,1) + "/" +
+        #                 self.getSortingCriteriaDataByCriteriaPriority(song,2))
+        #
+        # # if only first 2 were created
+        # elif os.access(self.musicFilesLocation + "/" +
+        #              self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
+        #              self.getSortingCriteriaDataByCriteriaPriority(song,1), os.F_OK):
+        #     shutil.move(song.getFileLocation() + song.getFileName(),
+        #                 self.musicFilesLocation + "/" +
+        #                 self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
+        #                 self.getSortingCriteriaDataByCriteriaPriority(song,1))
+        #
+        # # if only first directory was created (shouldn't happen, but just in case)
+        # elif os.access(self.musicFilesLocation + "/" +
+        #              self.getSortingCriteriaDataByCriteriaPriority(song,0), os.F_OK):
+        #     shutil.move(song.getFileLocation() + song.getFileName(),
+        #                 self.musicFilesLocation + "/" +
+        #                 self.getSortingCriteriaDataByCriteriaPriority(song,0))
+        #
+        # else:
+        #     print("Something went dreadfully amiss, and we were unable to relocate your song.")
 
     def sortFiles(self):
         """Actually handles the sorting of the music files"""

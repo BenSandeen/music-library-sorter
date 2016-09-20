@@ -1,4 +1,4 @@
-import mutagen
+import mutagen, os
 
 class Song:
     def __init__(self):
@@ -10,32 +10,73 @@ class Song:
         self.trackNumber = "No tracknumber info"
         self.trackTotal = "No tracktotal info"
         self.fileLocation = "No file location info"
+        self.fileName = "No file name info"
         self.attributeList = ["title", "artist", "album", "albumartist", "data",
                            "tracknumber", "tracktotal"]
 
-    def setTitle(self,songTitle):
-        self.title = songTitle
+    # we don't perform any checks on the data because we're
+    def setTitle(self, songTitle):
+        try:
+            songTitle = str(songTitle)
+            self.title = songTitle
+        except IOError as e: # maybe we were passed a file object???
+            print(e)
 
     def setArtist(self, artistName):
-        self.artist = artistName
+        try:
+            artistName = str(artistName)
+            self.artist = artistName
+        except IOError as e:
+            print(e)
 
-    def setAlbum(self,albumName):
-        self.album = albumName
+    def setAlbum(self, albumName):
+        try:
+            albumName = str(albumName)
+            self.album = albumName
+        except IOError as e:
+            print(e)
 
-    def setAlbumArtist(self,albumArtistName):
-        self.albumArtist = albumArtistName
+    def setAlbumArtist(self, albumArtistName):
+        try:
+            albumArtistName = str(albumArtistName)
+            self.albumArtist = albumArtistName
+        except IOError as e:
+            print(e)
 
     def setDate(self, songDate):
-        self.date = songDate
+        try:
+            songDate = str(songDate)
+            self.date = songDate
+        except IOError as e:
+            print(e)
 
     def setTrackNumber(self, songTrackNumber):
-        self.trackNumber = songTrackNumber
+        try:
+            songTrackNumber = str(songTrackNumber)
+            self.trackNumber = songTrackNumber
+        except IOError as e:
+            print(e)
 
     def setTrackTotal(self, songTrackTotal):
-        self.trackTotal = songTrackTotal
+        try:
+            songTrackTotal = str(songTrackTotal)
+            self.trackTotal = songTrackTotal
+        except IOError as e:
+            print(e)
 
     def setFileLocation(self, songFileLocation):
-        self.fileLocation = songFileLocation
+        try:
+            songFileLocation = str(songFileLocation)
+            self.fileLocation = songFileLocation
+        except IOError as e:
+            print(e)
+
+    def setFileName(self, songFileName):
+        try:
+            songFileName = str(songFileName)
+            self.fileName = songFileName
+        except IOError as e:
+            print(e)
 
     def getTitle(self):
         return self.title
@@ -61,10 +102,14 @@ class Song:
     def getFileLocation(self):
         return self.fileLocation
 
+    def getFileName(self):
+        return self.fileName
+
     def getSongInfoFromFile(self):
         """Reads file's metadata and stores it in the song object's data members"""
 
         # without the `[0]`, artist is a list of a string
+        # self.setFileLocation(os.getcwd())
 
         print(mutagen.File(self.fileLocation))
         try:

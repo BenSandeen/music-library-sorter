@@ -25,9 +25,31 @@ class TestClass:
         assert self.song.getTrackNumber() == "No tracknumber info"
         assert self.song.getTrackTotal() == "No tracktotal info"
 
+        self.song.setTitle("Bohemian Rhapsody")
+        self.song.setArtist("Queen")
+        self.song.setAlbum("We Will Rock You")
+        self.song.setAlbumArtist("Queen")
+        self.song.setDate("1980")
+        self.song.setTrackNumber("1")
+        self.song.setTrackTotal("20")
+
+        assert self.song.getTitle() == "Bohemian Rhapsody"
+        assert self.song.getArtist() == "Queen"
+        assert self.song.getAlbum() == "We Will Rock You"
+        assert self.song.getAlbumArtist() == "Queen"
+        assert self.song.getDate() == "1980"
+        assert self.song.getTrackNumber() == "1"
+        assert self.song.getTrackTotal() == "20"
+
+        # TODO: make sure non-string inputs are converted to strings first
+
     musicSorter = SM.SortMusicFiles()
 
-    def test_two(self):
+    @pytest.fixture(scope="module")
+    def songObject(self):
+        mySong = Song.Song()
+
+    def test_two(self, songObject):
         """Tests intitialization of SortMusicFiles object"""
         assert self.musicSorter.musicFilesLocation  == ""
         assert self.musicSorter.outputFilesLocation == ""
