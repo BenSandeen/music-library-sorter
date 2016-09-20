@@ -2,7 +2,7 @@
 
 import sortMusicFiles as SM
 import song as Song
-import sys
+# import sys,
 import os
 import pytest
 import mutagen
@@ -49,13 +49,31 @@ class TestClass:
         """Tests sorting and writing files to directory"""
         # location = "/mnt/c/Users/Ben/Documents/Computer Science/music_sorter/music-library-sorter"
         # p = tmpdir.mkdir(location + "test_output").join("hello.txt")
-        p = tmpdir.mkdir("sub").join("hello.txt")
-        p.write("content")
-        # with open(tmpdir.mkdir("sub").join("hello.txt"),'w') as output:
-        #     output.write("test")
-        # with open("sub/hello.txt",'r') as f:
-        #     assert f.read() == "test"
-        assert len(tmpdir.listdir()) == 1
+
+        # filenames of songs in test directory
+        titles = ["[Mix] One and a half hours of future bass, nu funk, electro, ect.ogg",
+                  "001_bonnie_and_clyde.ogg", "001_Title.ogg",
+                  "01 - A Mighty Fortress Is Our God.ogg",
+                  "01 - Amazing Grace (From ''Revival Tonight!'').ogg",
+                  "01 - Ari Pulkkinen - Outland Main Theme.ogg",
+                  "01 - Bach_ Concerto in D major, BWV_ III. Allegro (III. Alle.ogg",
+                  "01 - Keep It for Your Own.ogg"]
+
+        self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
+        print("song files:\t", os.listdir(self.musicSorter.getMusicFilesLocation()))
+        print("Songs:\t", self.musicSorter.Songs)
+        self.musicSorter.findSongs()
+        print("Songs:\t", self.musicSorter.Songs)
+        assert len(self.musicSorter.Songs) > 0
+
+        # myDir = tmpdir.mkdir("sub")
+        # p = []
+
+        # for song in titles:
+        #     p.append(myDir.join(song))
+        #
+        # print(tmpdir.listdir())
+        # assert len(tmpdir.listdir()) == 1
 
         self.musicSorter.resetObjectToDefault()
 

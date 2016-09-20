@@ -29,7 +29,7 @@ class SortMusicFiles:
     def setOutputFilesLocationFromUserInput(self):
         """This may be updated in the future with a GUI"""
         self.setOutputFilesLocation(
-            self.removeBadSymbolsInPathName(raw_input("What is the path where you wish to put your music?\t")))
+            self.removeBadSymbolsInPathName(raw_input("What is the path where you wish to put your music?\t")) + "/")
 
     def getOutputFilesLocation(self):
         return self.outputFilesLocation
@@ -53,7 +53,22 @@ class SortMusicFiles:
             for ext in musicFileExtensions:
                 if ext in thing:
                     # this will need to append a song object in the future
-                    self.Songs.append(thing)
+                    newSong = Song.Song()
+                    self.Songs.append(newSong)
+
+    def moveSong(self, song):
+        """Moves a single song.  Makes sure not to create a folder if one by the same
+        name already exists"""
+        try:
+            os.mkdir(self.getOutputFilesLocation() + song.artist)
+        except OSError as e:
+            print(e)
+
+    def sortFiles(self):
+        """Actually handles the sorting of the music files"""
+        self.findSongs()
+        for song in self.Songs:
+            self.moveSong(song)
 
     def removeBadSymbolsInPathName(self, path):
         """Removes symbols incompatible Windows's file system"""
