@@ -81,44 +81,54 @@ class TestClass:
         print(mutagen.File("/mnt/c/Users/Ben/Music/Test OGG Music/testing/[Mix] One and a half hours of future bass, nu funk, electro, ect.ogg"))
         self.musicSorter.resetObjectToDefault()
 
-    @pytest.fixture(scope="session")
-    def songObjectList(self):
-        titles = ["Bohemian Rhapsody","Fireflies", "Sick Beats"]
-        artists = ["Queen", "Owl City", "KKB"]
-        albums = ["We Will Rock You", "Deer in the Headlights", "KKB"]
-        albumArtists = ["Queen", "Adam Something", "Sarah Midori Perry, Augustus Lobban"]
-        dates = [1980, 2011, 2016]
-        trackNumbers = [1, 5, 8]
-        trackTotals = [20, 14, 12]
-        fileLocations = ["/mnt/c/Users/Ben/Music/Test OGG Music/testing/",
-                         "/mnt/c/Users/Ben/Music/Test OGG Music/testing/",
-                         "/mnt/c/Users/Ben/Music/Test OGG Music/testing/"]
-        fileNames = ["Bohemian Rhapsody.ogg", "Fireflies.mp3", "Sick Beats.flac"]
+    # @pytest.fixture#(scope="module")
+    # def songObjectList(self, tmpdir):
+    #     titles = ["Bohemian Rhapsody","Fireflies", "Sick Beats"]
+    #     artists = ["Queen", "Owl City", "KKB"]
+    #     albums = ["We Will Rock You", "Deer in the Headlights", "KKB"]
+    #     albumArtists = ["Queen", "Adam Something", "Sarah Midori Perry, Augustus Lobban"]
+    #     dates = [1980, 2011, 2016]
+    #     trackNumbers = [1, 5, 8]
+    #     trackTotals = [20, 14, 12]
+    #     fileLocations = ["/mnt/c/Users/Ben/Music/Test OGG Music/testing/",
+    #                      "/mnt/c/Users/Ben/Music/Test OGG Music/testing/",
+    #                      "/mnt/c/Users/Ben/Music/Test OGG Music/testing/"]
+    #     fileNames = ["Bohemian Rhapsody.ogg", "Fireflies.mp3", "Sick Beats.flac"]
+    #
+    #     myDir = tmpdir.mkdir("folder")
+    #     # listOfSongObjects = []
+    #     for i in xrange(len(titles)):
+    #         mySong = Song.Song()
+    #         mySong.setTitle(titles[i])
+    #         mySong.setArtist(artists[i])
+    #         mySong.setAlbum(albums[i])
+    #         mySong.setAlbumArtist(albumArtists[i])
+    #         mySong.setDate(dates[i])
+    #         mySong.setTrackNumber(trackNumbers[i])
+    #         mySong.setTrackTotal(trackTotals[i])
+    #         mySong.setFileLocation(fileLocations[i])
+    #         mySong.setFileName(fileNames[i])
+    #
+    #         musicFile = mutagen.MP3(fileNames[1], ID3=mutagen.easyid3.EasyID3)
+    #         musicFile.save()
+    #
+    #         p = myDir.join(mySong.fileName)
+    #         print("$$$$$$$$$$$$$$$$$$$$",os.tempnam())
+    #         print(myDir.listdir())
+    #     # self.musicSorter.musicFilesLocation(myDir.path())
+    #         # listOfSongObjects.append(mySong)
+    #     # return listOfSongObjects
+    #     return myDir
 
-        listOfSongObjects = []
-        for i in xrange(len(titles)):
-            mySong = Song.Song()
-            mySong.setTitle(titles[i])
-            mySong.setArtist(artists[i])
-            mySong.setAlbum(albums[i])
-            mySong.setAlbumArtist(albumArtists[i])
-            mySong.setDate(dates[i])
-            mySong.setTrackNumber(trackNumbers[i])
-            mySong.setTrackTotal(trackTotals[i])
-            mySong.setFileLocation(fileLocations[i])
-            mySong.setFileName(fileNames[i])
-            listOfSongObjects.append(mySong)
-        return listOfSongObjects
-
-    @pytest.fixture(scope='session')
-    def makeMockDirectory(self, tmpdir_factory, songObjectList):
-        myDir = tmpdir_factory.mktemp("folder")#.join("piss.txt")
-        for song in songObjectList:
-            myDir.join(song.fileName)
-            # song.write(str(myDir + song.fileName))
-        print(myDir.listdir())
-        # assert 0 == 1
-        return myDir
+    # @pytest.fixture(scope='session')
+    # def makeMockDirectory(self, tmpdir_factory, songObjectList):
+    #     myDir = tmpdir_factory.mktemp("folder")#.join("piss.txt")
+    #     for song in songObjectList:
+    #         myDir.join(song.fileName)
+    #         # song.write(str(myDir + song.fileName))
+    #     print(myDir.listdir())
+    #     # assert 0 == 1
+    #     return myDir
 
     # @pytest.fixture(scope='session')
     # def image_file(tmpdir_factory):
@@ -127,30 +137,32 @@ class TestClass:
     #     img.save(str(fn))
     #     return fn
 
-    def test_four(self, makeMockDirectory):
-        """Tests finding music files in"""
+    def test_four(self):#, songObjectList):
+        """Tests finding music files in desired directory"""
 
         # TODO: make a function to create mock music files so we can place them in
         # TODO: the tmpdir, rather than having to test with actual files
 
         # myDir = self.makeMockDirectory(songObjectList)
-        assert (len(makeMockDirectory.listdir())) != 0
+        # assert (len(songObjectList.listdir())) != 0
         # location = "/mnt/c/Users/Ben/Documents/Computer Science/music_sorter/music-library-sorter"
         # p = tmpdir.mkdir(location + "test_output").join("hello.txt")
 
         # filenames of songs in test directory
-        titles = ["[Mix] One and a half hours of future bass, nu funk, electro, ect.ogg",
-                  "001_bonnie_and_clyde.ogg", "001_Title.ogg",
-                  "01 - A Mighty Fortress Is Our God.ogg",
-                  "01 - Amazing Grace (From ''Revival Tonight!'').ogg",
-                  "01 - Ari Pulkkinen - Outland Main Theme.ogg",
-                  "01 - Bach_ Concerto in D major, BWV_ III. Allegro (III. Alle.ogg",
-                  "01 - Keep It for Your Own.ogg"]
+        titles = [u"[Mix] One and a half hours of future bass, nu funk, electro, ect",
+                  u"_bonnie_and_clyde", u"Title",
+                  u"A Mighty Fortress Is Our God",
+                  u"Amazing Grace (From ''Revival Tonight!'')",
+                  u"Outland Main Theme",
+                  u"Bach: Concerto in D major, BWV: III. Allegro (III. Allegro)",
+                  u"Keep It for Your Own"]
 
         self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
         self.musicSorter.findSongs()
         # assert 0 == 1
         assert len(self.musicSorter.Songs) > 0
+        for i in self.musicSorter.Songs:
+            assert i.getTitle() in titles
 
         # myDir = tmpdir.mkdir("sub")
         # p = []

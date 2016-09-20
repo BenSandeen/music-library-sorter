@@ -1,4 +1,4 @@
-import mutagen, os
+import mutagen, os, unicodedata as ud
 
 class Song:
     def __init__(self):
@@ -14,10 +14,13 @@ class Song:
         self.attributeList = ["title", "artist", "album", "albumartist", "data",
                            "tracknumber", "tracktotal"]
 
-    # we don't perform any checks on the data because we're
+    def cleanStrings(self):
+        """Converts unicode to ASCII and """
+
     def setTitle(self, songTitle):
         try:
             songTitle = str(songTitle)
+            # print("SONGTITLE:\t",songTitle)
             self.title = songTitle
         except IOError as e: # maybe we were passed a file object???
             print(e)

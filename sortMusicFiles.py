@@ -58,6 +58,9 @@ class SortMusicFiles:
                 if ext in thing:
                     # TODO: give this song object the correct data members
                     newSong = Song.Song()
+                    metadata = mutagen.File(self.musicFilesLocation +"/"+ thing)
+                    print(mutagen.File(self.musicFilesLocation + "/"+thing))
+                    newSong.setTitle(metadata["title"][0])
                     self.Songs.append(newSong)
 
     def getSortingCriteriaDataByCriteriaPriority(self, song, priority):
