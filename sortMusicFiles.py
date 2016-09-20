@@ -8,6 +8,9 @@ class SortMusicFiles:
         self.musicFilesLocation = ""
         self.outputFilesLocation = ""
         self.Songs = []
+        self.firstSortingCriteria = "artist"
+        self.secondSortingCriteria = "album"
+        self.thirdSortingCriteria = ""
 
     def resetObjectToDefault(self):
         """Used only for testing, so we don't have to create a bunch of separate objects"""
@@ -56,11 +59,26 @@ class SortMusicFiles:
                     newSong = Song.Song()
                     self.Songs.append(newSong)
 
+    def getFirstSortingCriteriaData(self, song):
+        """Gets data from Song object according to the music file sorter's first
+        sorting criteria"""
+
+        # switch statement allows us to obtain the appropriate data, depending on
+        # what the sorting criteria is set to.  Not executing the functions (that's
+        # why the parentheses at the end are omitted) should, in theory, reduce some
+        # overhead of unnecessary function calls, but I don't know how much work that
+        # is compared with doing what I did below
+        switchStatement = {"artist": song.getArtist, "album": song.getAlbum,
+                           "albumartist": song.getAlbumArtist, "title": song.getTitle,
+                           "date": song.getDate, "tracknumber": song.getTrackNumber,
+                           "tracktotal": song.getTrackTotal}
+        return switchStatement[self.firstSortingCriteria]()
+
     def moveSong(self, song):
         """Moves a single song.  Makes sure not to create a folder if one by the same
         name already exists"""
         try:
-            os.mkdir(self.getOutputFilesLocation() + song.artist)
+            os.mkdir(self.getOutputFilesLocation() + song.getFirstSortingCriteriaData())
         except OSError as e:
             print(e)
 

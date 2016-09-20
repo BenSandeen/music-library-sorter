@@ -47,6 +47,10 @@ class TestClass:
 
     def test_four(self, tmpdir):
         """Tests sorting and writing files to directory"""
+
+        # TODO: make a function to create mock music files so we can place them in
+        # TODO: the tmpdir, rather than having to test with actual files
+
         # location = "/mnt/c/Users/Ben/Documents/Computer Science/music_sorter/music-library-sorter"
         # p = tmpdir.mkdir(location + "test_output").join("hello.txt")
 
@@ -60,10 +64,7 @@ class TestClass:
                   "01 - Keep It for Your Own.ogg"]
 
         self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
-        print("song files:\t", os.listdir(self.musicSorter.getMusicFilesLocation()))
-        print("Songs:\t", self.musicSorter.Songs)
         self.musicSorter.findSongs()
-        print("Songs:\t", self.musicSorter.Songs)
         assert len(self.musicSorter.Songs) > 0
 
         # myDir = tmpdir.mkdir("sub")
