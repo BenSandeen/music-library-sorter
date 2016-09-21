@@ -163,6 +163,8 @@ class TestClass:
         assert len(self.musicSorter.Songs) > 0
         for i in self.musicSorter.Songs:
             assert i.getTitle() in titles
+            assert os.path.isfile(i.getFileLocation())
+            # assert 0
 
         # myDir = tmpdir.mkdir("sub")
         # p = []
@@ -175,9 +177,20 @@ class TestClass:
 
         self.musicSorter.resetObjectToDefault()
 
-    # def test_five(self):
-    #     pass
-    #
+    def test_five(self):
+        """"Tests to make sure files are moved correctly.  Currently, this requires
+        the person testing the program to inspect the testing directory themselves
+        to verify that the files were sorted properly"""
+        self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
+        self.musicSorter.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
+
+        self.musicSorter.sortFiles()
+
+        # there should be no files remaining in this directory
+        assert len(os.listdir("/mnt/c/Users/Ben/Music/Test OGG Music/testing")) == 0
+
+        self.musicSorter.resetObjectToDefault()
+
     # def test_six(self):
     #     pass
     #
