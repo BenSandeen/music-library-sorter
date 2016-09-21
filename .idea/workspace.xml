@@ -24,14 +24,14 @@
     <favorites_list name="music-library-sorter" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6937591">
+    <splitter split-orientation="horizontal" split-proportion="0.30769232">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="sortMusicFiles.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-901">
-                  <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+                <state relative-caret-position="-24">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -56,8 +56,8 @@
           <file leaf-file-name="test_sortMusic.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test_sortMusic.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-68">
-                  <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+                <state relative-caret-position="374">
+                  <caret line="184" column="27" selection-start-line="184" selection-start-column="27" selection-end-line="187" selection-end-column="27" />
                   <folding>
                     <element signature="e#50#77#0" expanded="true" />
                   </folding>
@@ -96,8 +96,8 @@
       <list>
         <option value="$PROJECT_DIR$/sortMusic.py" />
         <option value="$PROJECT_DIR$/song.py" />
-        <option value="$PROJECT_DIR$/test_sortMusic.py" />
         <option value="$PROJECT_DIR$/sortMusicFiles.py" />
+        <option value="$PROJECT_DIR$/test_sortMusic.py" />
       </list>
     </option>
   </component>
@@ -569,22 +569,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_sortMusic.py">
+    <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+        <state relative-caret-position="-24">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#50#77#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
+    <entry file="file://$PROJECT_DIR$/test_sortMusic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-901">
-          <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+        <state relative-caret-position="374">
+          <caret line="184" column="27" selection-start-line="184" selection-start-column="27" selection-end-line="187" selection-end-column="27" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#50#77#0" expanded="true" />
           </folding>
         </state>
       </provider>

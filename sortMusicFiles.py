@@ -111,70 +111,38 @@ class SortMusicFiles:
         criteriaByPriority = [self.firstSortingCriteria, self.secondSortingCriteria,
                               self.thirdSortingCriteria]
 
-        return switchStatement[self.firstSortingCriteria]()
+        return switchStatement[criteriaByPriority[priority]]()
 
     def moveSong(self, song):
         """Moves a single song.  Makes sure not to create a folder if one by the same
         name already exists"""
+        # TODO: split these lines up into separate try-excepts, because it is possible
+        # TODO: that it will succeed at making the dirs but fail at moving the file,
+        # TODO: and the code as it currently is would yield errors on the later
+        # TODO: try-excepts, because the directory would already exist
         if self.thirdSortingCriteria != "":
-            try:
-                # TODO: split these lines up into separate try-excepts, because it is possible
-                # TODO: that it will succeed at making the dirs but fail at moving the file,
-                # TODO: and the code as it currently is would yield errors on the later
-                # TODO: try-excepts, because the directory would already exist
-                os.makedirs(self.outputFilesLocation + "/" +
-                         self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
-                         self.getSortingCriteriaDataByCriteriaPriority(song,1) + "/" +
-                         self.getSortingCriteriaDataByCriteriaPriority(song,2))
-            except OSError as e:
-                pass
-            try:
-                shutil.move(song.getFileLocation() + song.getFileName(),
-                            self.outputFilesLocation + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song, 1) + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song, 2))
-            except OSError as e:
-                print("Couldn't move song file")
+            currentLocation = song.getFileLocation() + song.getFileName()
+            destination = (self.outputFilesLocation + "/" +
+                          self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
+                          self.getSortingCriteriaDataByCriteriaPriority(song,1) + "/" +
+                          self.getSortingCriteriaDataByCriteriaPriority(song,2))
 
+            if os.path.exists(destination):
+                shutil.move(currentLocation, destination)
+            else:
+                os.makedirs(destination)
+                shutil.move(currentLocation, destination)
         else:
-            try:
-                os.makedirs(self.outputFilesLocation + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song, 1))
-            except OSError as e:
-                pass
-            try:
-                print("Moving file into artist/album dir")
-                shutil.move(song.getFileLocation() + song.getFileName(),
-                            self.outputFilesLocation + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song, 1))
-            except OSError as e:
-                print("Couldn't move song file")
+            currentLocation = song.getFileLocation() + song.getFileName()
+            destination = (self.outputFilesLocation + "/" +
+                           self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
+                           self.getSortingCriteriaDataByCriteriaPriority(song, 1))
 
-            try:
-                os.makedirs(self.outputFilesLocation + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song, 0))
-            except OSError as e:
-                print("Couldn't move song file")
-
-            try:
-                shutil.move(song.getFileLocation() + song.getFileName(),
-                            self.outputFilesLocation + "/" +
-                            self.getSortingCriteriaDataByCriteriaPriority(song, 0))
-            except OSError as e:
-                print("Couldn't move song file")
-
-            try:
-                os.makedirs(self.outputFilesLocation)
-            except OSError as e:
-                pass
-            try:
-                shutil.move(song.getFileLocation() + song.getFileName(),self.outputFilesLocation)
-            except OSError as e:
-                print(e)
-                return
+            if os.path.exists(destination):
+                shutil.move(currentLocation, destination)
+            else:
+                os.makedirs(destination)
+                shutil.move(currentLocation, destination)
 
 
         #     shutil.move(song.getFileLocation() + song.getFileName(), self.musicFilesLocation + "/" +

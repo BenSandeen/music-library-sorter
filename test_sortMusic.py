@@ -181,10 +181,16 @@ class TestClass:
         """"Tests to make sure files are moved correctly.  Currently, this requires
         the person testing the program to inspect the testing directory themselves
         to verify that the files were sorted properly"""
+
         self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
         self.musicSorter.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
 
         self.musicSorter.sortFiles()
+
+        # self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
+        # self.musicSorter.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
+        #
+        # self.musicSorter.sortFiles()
 
         # there should be no files remaining in this directory
         assert len(os.listdir("/mnt/c/Users/Ben/Music/Test OGG Music/testing")) == 0
