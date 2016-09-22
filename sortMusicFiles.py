@@ -3,6 +3,9 @@ import song as Song
 import os
 import mutagen
 import shutil
+import easygui as eg
+from Tkinter import Tk
+from tkFileDialog import askdirectory
 
 class SortMusicFiles:
     def __init__(self):
@@ -22,7 +25,9 @@ class SortMusicFiles:
 
     def setMusicFilesLocationFromUserInput(self):
         """This may be updated in the future with a GUI"""
-        self.setMusicFilesLocation(self.removeBadSymbolsInPathName(raw_input("What is the path where your music is located?\t")))
+        Tk().withdraw()
+        self.setMusicFilesLocation(askdirectory())
+        # self.setMusicFilesLocation(self.removeBadSymbolsInPathName(raw_input("What is the path where your music is located?\t")))
 
     def getMusicFilesLocation(self):
         return self.musicFilesLocation
@@ -32,8 +37,10 @@ class SortMusicFiles:
 
     def setOutputFilesLocationFromUserInput(self):
         """This may be updated in the future with a GUI"""
-        self.setOutputFilesLocation(
-            self.removeBadSymbolsInPathName(raw_input("What is the path where you wish to put your music?\t")) + "/")
+        Tk().withdraw()
+        self.setOutputFilesLocation(askdirectory())
+        # self.setOutputFilesLocation(
+        #     self.removeBadSymbolsInPathName(raw_input("What is the path where you wish to put your music?\t")) + "/")
 
     def getOutputFilesLocation(self):
         return self.outputFilesLocation
@@ -44,7 +51,8 @@ class SortMusicFiles:
         # TODO: directory at some point, but not now.  Probably use `os.walk`, which searches
         # TODO: a directory recursively
         if self.musicFilesLocation == "":
-            raise IOError
+            self.setMusicFilesLocationFromUserInput()
+            # raise IOError
 
         musicFileExtensions = ['.3gp', '.aa', '.aac', '.aax', '.act', '.aiff', '.amr',
                                '.ape', '.au', '.awb', '.dct', '.dss', '.dvf', '.flac',
@@ -207,6 +215,7 @@ class SortMusicFiles:
     def sortFiles(self):
         """Actually handles the sorting of the music files"""
         self.findSongs()
+        self.setOutputFilesLocationFromUserInput()
         for song in self.Songs:
             self.moveSong(song)
 
@@ -228,8 +237,8 @@ class SortMusicFiles:
 # below is code to test basic things
 
 s = SortMusicFiles()
-s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/A")
-s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/Music")
+# s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/A")
+# s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/Music")
 s.sortFiles()
 # s.Songs = ["hi"]
 # s.resetObjectToDefault()
