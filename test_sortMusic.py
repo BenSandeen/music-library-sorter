@@ -70,16 +70,18 @@ class TestClass:
         assert self.musicSorter.Songs               == []
         self.musicSorter.resetObjectToDefault()
 
-    def test_three(self):
-        """Tests getting user input and setting data appropriately"""
-        path = "/mnt/c/Users/Ben/Music/Test OGG Music"
-        with pytest.raises(IOError):
-            self.musicSorter.findSongs()
-        self.musicSorter.setMusicFilesLocation(path + "/testing")
-        self.musicSorter.findSongs()
-        assert self.musicSorter.Songs != []
-        print(mutagen.File("/mnt/c/Users/Ben/Music/Test OGG Music/testing/[Mix] One and a half hours of future bass, nu funk, electro, ect.ogg"))
-        self.musicSorter.resetObjectToDefault()
+
+    # def test_three(self):
+    #     """Tests getting user input and setting data appropriately"""
+    #     path = "/mnt/c/Users/Ben/Music/Test OGG Music"
+    #     with pytest.raises(IOError):
+    #         self.musicSorter.findSongs()
+    #     self.musicSorter.setMusicFilesLocation(path + "/testing")
+    #     self.musicSorter.findSongs()
+    #     assert self.musicSorter.Songs != []
+    #     # print(mutagen.File("/mnt/c/Users/Ben/Music/Test OGG Music/testing/[Mix] One and a half hours of future bass, nu funk, electro, ect.ogg"))
+    #     self.musicSorter.resetObjectToDefault()
+
 
     # @pytest.fixture#(scope="module")
     # def songObjectList(self, tmpdir):
@@ -137,53 +139,46 @@ class TestClass:
     #     img.save(str(fn))
     #     return fn
 
-    def test_four(self):#, songObjectList):
-        """Tests finding music files in desired directory"""
 
-        # TODO: make a function to create mock music files so we can place them in
-        # TODO: the tmpdir, rather than having to test with actual files
+    # def test_four(self):#, songObjectList):
+    #     """Tests finding music files in desired directory"""
+    #
+    #     # TODO: make a function to create mock music files so we can place them in
+    #     # TODO: the tmpdir, rather than having to test with actual files
+    #
+    #     # myDir = self.makeMockDirectory(songObjectList)
+    #     # assert (len(songObjectList.listdir())) != 0
+    #     # location = "/mnt/c/Users/Ben/Documents/Computer Science/music_sorter/music-library-sorter"
+    #     # p = tmpdir.mkdir(location + "test_output").join("hello.txt")
+    #
+    #     # filenames of songs in test directory
+    #     titles = [u"[Mix] One and a half hours of future bass, nu funk, electro, ect",
+    #               u"_bonnie_and_clyde", u"Title",
+    #               u"A Mighty Fortress Is Our God",
+    #               u"Amazing Grace (From ''Revival Tonight!'')",
+    #               u"Outland Main Theme",
+    #               u"Bach: Concerto in D major, BWV: III. Allegro (III. Allegro)",
+    #               u"Keep It for Your Own"]
+    #
+    #     self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
+    #     self.musicSorter.findSongs()
+    #     # assert 0 == 1
+    #     assert len(self.musicSorter.Songs) > 0
+    #     for i in self.musicSorter.Songs:
+    #         assert i.getTitle() in titles
+    #         assert os.path.isfile(i.getFileLocation())
+    #         # assert 0
+    #
+    #     self.musicSorter.resetObjectToDefault()
 
-        # myDir = self.makeMockDirectory(songObjectList)
-        # assert (len(songObjectList.listdir())) != 0
-        # location = "/mnt/c/Users/Ben/Documents/Computer Science/music_sorter/music-library-sorter"
-        # p = tmpdir.mkdir(location + "test_output").join("hello.txt")
-
-        # filenames of songs in test directory
-        titles = [u"[Mix] One and a half hours of future bass, nu funk, electro, ect",
-                  u"_bonnie_and_clyde", u"Title",
-                  u"A Mighty Fortress Is Our God",
-                  u"Amazing Grace (From ''Revival Tonight!'')",
-                  u"Outland Main Theme",
-                  u"Bach: Concerto in D major, BWV: III. Allegro (III. Allegro)",
-                  u"Keep It for Your Own"]
-
-        self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
-        self.musicSorter.findSongs()
-        # assert 0 == 1
-        assert len(self.musicSorter.Songs) > 0
-        for i in self.musicSorter.Songs:
-            assert i.getTitle() in titles
-            assert os.path.isfile(i.getFileLocation())
-            # assert 0
-
-        # myDir = tmpdir.mkdir("sub")
-        # p = []
-
-        # for song in titles:
-        #     p.append(myDir.join(song))
-        #
-        # print(tmpdir.listdir())
-        # assert len(tmpdir.listdir()) == 1
-
-        self.musicSorter.resetObjectToDefault()
 
     def test_five(self):
         """"Tests to make sure files are moved correctly.  Currently, this requires
         the person testing the program to inspect the testing directory themselves
         to verify that the files were sorted properly"""
 
-        self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
-        self.musicSorter.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
+        self.musicSorter.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/A")
+        self.musicSorter.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/Music")
 
         self.musicSorter.sortFiles()
 
@@ -193,7 +188,7 @@ class TestClass:
         # self.musicSorter.sortFiles()
 
         # there should be no files remaining in this directory
-        assert len(os.listdir("/mnt/c/Users/Ben/Music/Test OGG Music/testing")) == 0
+        # assert len(os.listdir("/mnt/c/Users/Ben/Music/Test OGG Music/testing")) == 0
 
         self.musicSorter.resetObjectToDefault()
 

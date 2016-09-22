@@ -59,38 +59,39 @@ class SortMusicFiles:
                     # TODO: give this song object the correct data members
                     newSong = Song.Song()
                     metadata = mutagen.File(self.musicFilesLocation +"/"+ thing)
-                    print(mutagen.File(self.musicFilesLocation + "/"+thing))
+                    # print(mutagen.File(self.musicFilesLocation + "/"+thing))
                     newSong.setFileName(thing)
-                    print("PATH OF FILE:\t",self.musicFilesLocation + "/")
+                    # print("PATH OF FILE:\t",self.musicFilesLocation + "/")
                     newSong.setFileLocation(self.musicFilesLocation + "/")
-                    try:
-                        newSong.setTitle(metadata["title"][0])
-                    except KeyError as e:
-                        print(e)
-                    try:
-                        newSong.setArtist(metadata["artist"][0])
-                    except KeyError as e:
-                        print(e)
-                    try:
-                        newSong.setAlbum(metadata["album"][0])
-                    except KeyError as e:
-                        print(e)
-                    try:
-                        newSong.setAlbumArtist(metadata["albumartist"][0])
-                    except KeyError as e:
-                        print(e)
-                    try:
-                        newSong.setDate(metadata["date"][0])
-                    except KeyError as e:
-                        print(e)
-                    try:
-                        newSong.setTrackNumber(metadata["tracknumber"][0])
-                    except KeyError as e:
-                        print(e)
-                    try:
-                        newSong.setTrackTotal(metadata["tracktotal"][0])
-                    except KeyError as e:
-                        print(e)
+                    newSong.getSongInfoFromFile()
+                    # try:
+                    #     newSong.setTitle(metadata["title"][0])
+                    # except KeyError as e:
+                    #     print(e)
+                    # try:
+                    #     newSong.setArtist(metadata["artist"][0])
+                    # except KeyError as e:
+                    #     print(e)
+                    # try:
+                    #     newSong.setAlbum(metadata["album"][0])
+                    # except KeyError as e:
+                    #     print(e)
+                    # try:
+                    #     newSong.setAlbumArtist(metadata["albumartist"][0])
+                    # except KeyError as e:
+                    #     print(e)
+                    # try:
+                    #     newSong.setDate(metadata["date"][0])
+                    # except KeyError as e:
+                    #     print(e)
+                    # try:
+                    #     newSong.setTrackNumber(metadata["tracknumber"][0])
+                    # except KeyError as e:
+                    #     print(e)
+                    # try:
+                    #     newSong.setTrackTotal(metadata["tracktotal"][0])
+                    # except KeyError as e:
+                    #     print(e)
 
                     self.Songs.append(newSong)
 
@@ -139,11 +140,26 @@ class SortMusicFiles:
                            self.getSortingCriteriaDataByCriteriaPriority(song, 1))
 
             if os.path.exists(destination):
-                shutil.move(currentLocation, destination)
+                try:
+                    shutil.move(currentLocation, destination)
+                except Exception as e:
+                    print("Current file location:\t", currentLocation)
+                    print("File destination:\t", destination)
+                    print(e)
             else:
-                os.makedirs(destination)
-                shutil.move(currentLocation, destination)
+                try:
+                    os.makedirs(destination)
+                except Exception as e:
+                    print("Current file location:\t", currentLocation)
+                    print("File destination:\t", destination)
+                    print(e)
 
+                try:
+                    shutil.move(currentLocation, destination)
+                except Exception as e:
+                    print("Current file location:\t", currentLocation)
+                    print("File destination:\t", destination)
+                    print(e)
 
         #     shutil.move(song.getFileLocation() + song.getFileName(), self.musicFilesLocation + "/" +
         #                     self.getSortingCriteriaDataByCriteriaPriority(song,0) + "/" +
@@ -211,8 +227,9 @@ class SortMusicFiles:
 ##############################################################
 # below is code to test basic things
 
-# s = SortMusicFiles()
-# s.setMusicFilesLocation("poop")
-# s.setOutputFilesLocation("output")
+s = SortMusicFiles()
+s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/A")
+s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/Music")
+s.sortFiles()
 # s.Songs = ["hi"]
 # s.resetObjectToDefault()
