@@ -1,3 +1,5 @@
+#! /
+
 import unicodedata as ud
 import song as Song
 import os

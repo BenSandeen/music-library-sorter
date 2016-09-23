@@ -1,6 +1,7 @@
 from Tkinter import Tk
 from tkFileDialog import askdirectory
+import os
 
 Tk().withdraw()
 dirName = askdirectory()
-print(dirName)
+print(os.listdir(dirName))
