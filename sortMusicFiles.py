@@ -1,11 +1,11 @@
 #! /
-
+from __future__ import print_function
 import unicodedata as ud
 import song as Song
 import os
 import mutagen
 import shutil
-import easygui as eg
+# import easygui as eg
 from Tkinter import Tk
 from tkFileDialog import askdirectory
 
@@ -27,8 +27,17 @@ class SortMusicFiles:
 
     def setMusicFilesLocationFromUserInput(self):
         """This may be updated in the future with a GUI"""
-        Tk().withdraw()
-        self.setMusicFilesLocation(askdirectory())
+        try:
+            Tk().withdraw()
+            location = askdirectory()
+        except:
+            doesPathExist = 0
+            while not doesPathExist:
+                location = raw_input("Enter path to your music:\t")
+                if os._exists(location, os.R_OK): # can we `R`ead from the path?
+                    doesPathExist = 1
+
+        self.setMusicFilesLocation(location)
         # self.setMusicFilesLocation(self.removeBadSymbolsInPathName(raw_input("What is the path where your music is located?\t")))
 
     def getMusicFilesLocation(self):
@@ -39,10 +48,17 @@ class SortMusicFiles:
 
     def setOutputFilesLocationFromUserInput(self):
         """This may be updated in the future with a GUI"""
-        Tk().withdraw()
-        self.setOutputFilesLocation(askdirectory())
-        # self.setOutputFilesLocation(
-        #     self.removeBadSymbolsInPathName(raw_input("What is the path where you wish to put your music?\t")) + "/")
+        try:
+            Tk().withdraw()
+            location = askdirectory()
+        except:
+            doesPathExist = 0
+            while not doesPathExist:
+                location = raw_input("Enter path to where you want your music to go:\t")
+                if os._exists(location, os.W_OK): # can we `W`rite to the path?
+                    doesPathExist = 1
+
+        self.setOutputFilesLocation(location)
 
     def getOutputFilesLocation(self):
         return self.outputFilesLocation
@@ -63,47 +79,55 @@ class SortMusicFiles:
                                '.ra', '.rm', '.raw', '.sln', '.tta', '.vox', '.wav',
                                '.wma', '.wv', '.webm']
         # dirQueue = [] # queue for holding directories, so we can recurse into them
-        for thing in os.listdir(self.musicFilesLocation):
+        for thing in os.walk(self.musicFilesLocation):
+            # print("level 1")
             for ext in musicFileExtensions:
-                if ext in thing:
-                    # TODO: give this song object the correct data members
-                    newSong = Song.Song()
-                    metadata = mutagen.File(self.musicFilesLocation +"/"+ thing)
-                    # print(mutagen.File(self.musicFilesLocation + "/"+thing))
-                    newSong.setFileName(thing)
-                    # print("PATH OF FILE:\t",self.musicFilesLocation + "/")
-                    newSong.setFileLocation(self.musicFilesLocation + "/")
-                    newSong.getSongInfoFromFile()
-                    # try:
-                    #     newSong.setTitle(metadata["title"][0])
-                    # except KeyError as e:
-                    #     print(e)
-                    # try:
-                    #     newSong.setArtist(metadata["artist"][0])
-                    # except KeyError as e:
-                    #     print(e)
-                    # try:
-                    #     newSong.setAlbum(metadata["album"][0])
-                    # except KeyError as e:
-                    #     print(e)
-                    # try:
-                    #     newSong.setAlbumArtist(metadata["albumartist"][0])
-                    # except KeyError as e:
-                    #     print(e)
-                    # try:
-                    #     newSong.setDate(metadata["date"][0])
-                    # except KeyError as e:
-                    #     print(e)
-                    # try:
-                    #     newSong.setTrackNumber(metadata["tracknumber"][0])
-                    # except KeyError as e:
-                    #     print(e)
-                    # try:
-                    #     newSong.setTrackTotal(metadata["tracktotal"][0])
-                    # except KeyError as e:
-                    #     print(e)
+                # print("level 2")
+                # thing is tuple: (pathname, dirs, files)
+                # we want the files.  os.walk then recurses into any dirs, so we catch files in there too
+                for possibleMusicFile in thing[2]:
+                    # print("level 3")
+                    if ext in possibleMusicFile:
+                        # print("level 4")
+                        # TODO: give this song object the correct data members
+                        newSong = Song.Song()
+                        metadata = mutagen.File(thing[0] +"/"+ possibleMusicFile)
+                        print("metadata:\t",metadata)
+                        # print(mutagen.File(self.musicFilesLocation + "/"+thing))
+                        newSong.setFileName(possibleMusicFile)
+                        # print("PATH OF FILE:\t",self.musicFilesLocation + "/")
+                        newSong.setFileLocation(thing[0] + "/") #self.musicFilesLocation + "/")
+                        newSong.getSongInfoFromFile()
+                        # try:
+                        #     newSong.setTitle(metadata["title"][0])
+                        # except KeyError as e:
+                        #     print(e)
+                        # try:
+                        #     newSong.setArtist(metadata["artist"][0])
+                        # except KeyError as e:
+                        #     print(e)
+                        # try:
+                        #     newSong.setAlbum(metadata["album"][0])
+                        # except KeyError as e:
+                        #     print(e)
+                        # try:
+                        #     newSong.setAlbumArtist(metadata["albumartist"][0])
+                        # except KeyError as e:
+                        #     print(e)
+                        # try:
+                        #     newSong.setDate(metadata["date"][0])
+                        # except KeyError as e:
+                        #     print(e)
+                        # try:
+                        #     newSong.setTrackNumber(metadata["tracknumber"][0])
+                        # except KeyError as e:
+                        #     print(e)
+                        # try:
+                        #     newSong.setTrackTotal(metadata["tracktotal"][0])
+                        # except KeyError as e:
+                        #     print(e)
 
-                    self.Songs.append(newSong)
+                        self.Songs.append(newSong)
 
     def getSortingCriteriaDataByCriteriaPriority(self, song, priority):
         """Gets data from Song object according to the music file sorter's first
@@ -144,6 +168,7 @@ class SortMusicFiles:
                 os.makedirs(destination)
                 shutil.move(currentLocation, destination)
         else:
+            print("Song Artist:\t",song.getArtist())
             currentLocation = song.getFileLocation() + song.getFileName()
             destination = (self.outputFilesLocation + "/" +
                            self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
@@ -217,9 +242,21 @@ class SortMusicFiles:
     def sortFiles(self):
         """Actually handles the sorting of the music files"""
         self.findSongs()
-        self.setOutputFilesLocationFromUserInput()
+        if self.getOutputFilesLocation() == "":
+            self.setOutputFilesLocationFromUserInput()
+        numSongs = len(self.Songs)
+        onePercentOfNumSongs = (numSongs / 100) + 1 # add 1 to avoid divide by 0 errors
+        counter = 0
+        print("Progress:\t",end="")
+        print("Music Location:\t",self.getMusicFilesLocation())
+        print("Output Location:\t",self.getOutputFilesLocation())
+        print("songs:\t",self.Songs)
+        print("Number of songs:\t", numSongs)
         for song in self.Songs:
+            if counter % onePercentOfNumSongs == 0:
+                print("-",end="")
             self.moveSong(song)
+            counter += 1
 
     def removeBadSymbolsInPathName(self, path):
         """Removes symbols incompatible Windows's file system"""
@@ -239,8 +276,16 @@ class SortMusicFiles:
 # below is code to test basic things
 
 s = SortMusicFiles()
-# s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/A")
-# s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/Music")
+# for thing in os.walk("/mnt/c/Users/Ben/Music/Test OGG Music/Music/"):
+#     print(thing)
+
+s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
+s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
+
+# s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
+# s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
+
 s.sortFiles()
+
 # s.Songs = ["hi"]
 # s.resetObjectToDefault()

@@ -137,31 +137,32 @@ class Song:
 
         # print(mutagen.File(self.fileLocation))
         try:
-            self.setTitle(((mutagen.File(self.fileLocation))["title"])[0])
+            self.setTitle(((mutagen.File(self.fileLocation + self.fileName))["title"])[0])
         except: pass
 
         try:
-            self.setArtist(((mutagen.File(self.fileLocation))["artist"])[0])
+            self.setArtist(((mutagen.File(self.fileLocation + self.fileName))["artist"])[0])
         except: pass
 
         try:
-            self.setAlbum(((mutagen.File(self.fileLocation))["album"])[0])
+            print("file location:\t",self.fileLocation + self.fileName)
+            self.setAlbum(((mutagen.File(self.fileLocation + self.fileName))["album"])[0])
+        except: print ("couldn't find album")#pass
+
+        try:
+            self.setAlbumArtist(((mutagen.File(self.fileLocation + self.fileName))["albumartist"])[0])
         except: pass
 
         try:
-            self.setAlbumArtist(((mutagen.File(self.fileLocation))["albumartist"])[0])
+            self.setDate(((mutagen.File(self.fileLocation + self.fileName))["artist"])[0])
         except: pass
 
         try:
-            self.setDate(((mutagen.File(self.fileLocation))["artist"])[0])
+            self.setTrackNumber(((mutagen.File(self.fileLocation + self.fileName))["tracknumber"])[0])
         except: pass
 
         try:
-            self.setTrackNumber(((mutagen.File(self.fileLocation))["tracknumber"])[0])
-        except: pass
-
-        try:
-            self.setTrackTotal(((mutagen.File(self.fileLocation))["tracktotal"])[0])
+            self.setTrackTotal(((mutagen.File(self.fileLocation + self.fileName))["tracktotal"])[0])
         except: pass
 
         dataMemberList = []
