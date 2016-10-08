@@ -78,24 +78,15 @@ class SortMusicFiles:
                                '.mp3', '.mpc', '.msv', '.ogg', '.oga', '.mogg', '.opus',
                                '.ra', '.rm', '.raw', '.sln', '.tta', '.vox', '.wav',
                                '.wma', '.wv', '.webm']
-        # dirQueue = [] # queue for holding directories, so we can recurse into them
         for thing in os.walk(self.musicFilesLocation):
-            # print("level 1")
             for ext in musicFileExtensions:
-                # print("level 2")
                 # thing is tuple: (pathname, dirs, files)
                 # we want the files.  os.walk then recurses into any dirs, so we catch files in there too
                 for possibleMusicFile in thing[2]:
-                    # print("level 3")
                     if ext in possibleMusicFile:
-                        # print("level 4")
-                        # TODO: give this song object the correct data members
                         newSong = Song.Song()
                         metadata = mutagen.File(thing[0] +"/"+ possibleMusicFile)
-                        # print("metadata:\t",metadata)
-                        # print(mutagen.File(self.musicFilesLocation + "/"+thing))
                         newSong.setFileName(possibleMusicFile)
-                        # print("PATH OF FILE:\t",self.musicFilesLocation + "/")
                         newSong.setFileLocation(thing[0] + "/") #self.musicFilesLocation + "/")
                         newSong.getSongInfoFromFile()
                         # try:
@@ -270,7 +261,16 @@ class SortMusicFiles:
     def cleanup(self):
         """Asks user if they want to remove empty directories, and does it if they wish"""
         # TODO: prompt the user to decide this before running
+        if (raw_input("Do you want to remove excess folders leftover from your before sorting your music?")
+            in ["y","yes","Y","Yes"]):
 
+            # set topdown to False so that we go to deepest nested dirs first; that way, we can delete
+            # any empty dirs, and then go up to the containing folder, which may then be empty, and
+            # delete it if necessary
+            for thing in os.walk(self.musicFilesLocation, topdown=False):
+                # thing is tuple: (pathname, dirs, files)
+                if ((thing[1] == []) and (thing[2] == [])): # if there are no files or dirs in this dir
+                    os.rmdir(thing[0])
 
     def removeBadSymbolsInPathName(self, path):
         """Removes symbols incompatible Windows's file system"""
@@ -293,10 +293,12 @@ s = SortMusicFiles()
 # for thing in os.walk("/mnt/c/Users/Ben/Music/Test OGG Music/Music/"):
 #     print(thing)
 
-# s.setMusicFilesLocation("/mnt/a/Music/OGG Music")
+s.setMusicFilesLocation("/mnt/a/Music/OGG Music")
+s.setOutputFilesLocation("/mnt/a/Music/OGG Music testing")
+
+# s.setMusicFilesLocation("/mnt/a/Music/sample music for testing")
 # s.setOutputFilesLocation("/mnt/a/Music/testing")
-s.setMusicFilesLocation("/mnt/a/Music/sample music for testing")
-s.setOutputFilesLocation("/mnt/a/Music/testing")
+
 # s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
 # s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
 
