@@ -247,7 +247,7 @@ class SortMusicFiles:
         counter = 0
         print("Music Location:\t",self.getMusicFilesLocation())
         print("Output Location:\t",self.getOutputFilesLocation())
-        print("songs:\t",self.Songs)
+        # print("songs:\t",self.Songs)
         print("Number of songs:\t", numSongs)
         print("Progress:\t",end="")
         for song in self.Songs:

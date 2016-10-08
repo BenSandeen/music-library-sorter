@@ -145,7 +145,7 @@ class Song:
         except: pass
 
         try:
-            print("file location:\t",self.fileLocation + self.fileName)
+            # print("file location:\t",self.fileLocation + self.fileName)
             self.setAlbum(((mutagen.File(self.fileLocation + self.fileName))["album"])[0])
         except: print ("couldn't find album")#pass
 

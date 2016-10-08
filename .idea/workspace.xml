@@ -29,25 +29,24 @@
           <file leaf-file-name="sortMusicFiles.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="676">
-                  <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+                <state relative-caret-position="278">
+                  <caret line="239" column="24" selection-start-line="239" selection-start-column="24" selection-end-line="239" selection-end-column="24" />
                   <folding>
                     <element signature="e#5#42#0" expanded="true" />
                     <element signature="e#3631#3637#0" expanded="false" />
                     <element signature="e#6750#12006#0" expanded="false" />
                     <element signature="e#9121#9215#0" expanded="false" />
-                    <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-                    <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+                    <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="run_sorter.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="run_sorter.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/run_sorter.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
+                <state relative-caret-position="102">
+                  <caret line="6" column="11" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
@@ -65,11 +64,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="song.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="song.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/song.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2788">
-                  <caret line="164" column="79" selection-start-line="164" selection-start-column="79" selection-end-line="164" selection-end-column="79" />
+                <state relative-caret-position="363">
+                  <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -121,9 +120,9 @@
         <option value="$PROJECT_DIR$/sortMusic.py" />
         <option value="$PROJECT_DIR$/test_sortMusic.py" />
         <option value="$PROJECT_DIR$/GUI_testing.py" />
-        <option value="$PROJECT_DIR$/song.py" />
-        <option value="$PROJECT_DIR$/sortMusicFiles.py" />
         <option value="$PROJECT_DIR$/run_sorter.py" />
+        <option value="$PROJECT_DIR$/sortMusicFiles.py" />
+        <option value="$PROJECT_DIR$/song.py" />
       </list>
     </option>
   </component>
@@ -525,8 +524,7 @@
             <element signature="e#3631#3637#0" expanded="false" />
             <element signature="e#6750#12006#0" expanded="false" />
             <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-            <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
           </folding>
         </state>
       </provider>
@@ -576,8 +574,7 @@
             <element signature="e#3631#3637#0" expanded="false" />
             <element signature="e#6750#12006#0" expanded="false" />
             <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-            <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
           </folding>
         </state>
       </provider>
@@ -627,8 +624,7 @@
             <element signature="e#3631#3637#0" expanded="false" />
             <element signature="e#6750#12006#0" expanded="false" />
             <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-            <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
           </folding>
         </state>
       </provider>
@@ -670,8 +666,7 @@
             <element signature="e#3631#3637#0" expanded="false" />
             <element signature="e#6750#12006#0" expanded="false" />
             <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-            <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
           </folding>
         </state>
       </provider>
@@ -703,8 +698,7 @@
             <element signature="e#3631#3637#0" expanded="false" />
             <element signature="e#6750#12006#0" expanded="false" />
             <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-            <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
           </folding>
         </state>
       </provider>
@@ -736,8 +730,7 @@
             <element signature="e#3631#3637#0" expanded="false" />
             <element signature="e#6750#12006#0" expanded="false" />
             <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-            <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
           </folding>
         </state>
       </provider>
@@ -776,8 +769,7 @@
             <element signature="e#3631#3637#0" expanded="false" />
             <element signature="e#6750#12006#0" expanded="false" />
             <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-            <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
           </folding>
         </state>
       </provider>
@@ -835,33 +827,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/song.py">
+    <entry file="file://$PROJECT_DIR$/run_sorter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="164" column="79" selection-start-line="164" selection-start-column="79" selection-end-line="164" selection-end-column="79" />
+        <state relative-caret-position="102">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+        <state relative-caret-position="278">
+          <caret line="239" column="24" selection-start-line="239" selection-start-column="24" selection-end-line="239" selection-end-column="24" />
           <folding>
             <element signature="e#5#42#0" expanded="true" />
             <element signature="e#3631#3637#0" expanded="false" />
             <element signature="e#6750#12006#0" expanded="false" />
             <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957115989" expanded="false" signature="5074:6710" ph="..." />
-            <marker date="1475957115989" expanded="false" signature="12032:12813" ph="..." />
+            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_sorter.py">
+    <entry file="file://$PROJECT_DIR$/song.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
+        <state relative-caret-position="363">
+          <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
           <folding />
         </state>
       </provider>
