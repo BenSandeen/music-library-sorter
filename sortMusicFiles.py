@@ -6,15 +6,18 @@ import os
 import mutagen
 import shutil
 # import easygui as eg
-from Tkinter import Tk
-from tkFileDialog import askdirectory
+try:
+    from Tkinter import Tk
+    from tkFileDialog import askdirectory
+except:
+    pass
 
 class SortMusicFiles:
     def __init__(self):
         self.musicFilesLocation = ""
         self.outputFilesLocation = ""
         self.Songs = []
-        self.firstSortingCriteria = "artist"
+        self.firstSortingCriteria = "albumartist"
         self.secondSortingCriteria = "album"
         self.thirdSortingCriteria = ""
 
@@ -65,9 +68,6 @@ class SortMusicFiles:
 
     def findSongs(self):
         """Searches musicFilesLocation for music files, then puts it in Songs list"""
-        # TODO: We will want to make it so that the program can recursively search a
-        # TODO: directory at some point, but not now.  Probably use `os.walk`, which searches
-        # TODO: a directory recursively
         if self.musicFilesLocation == "":
             self.setMusicFilesLocationFromUserInput()
             # raise IOError
@@ -92,7 +92,7 @@ class SortMusicFiles:
                         # TODO: give this song object the correct data members
                         newSong = Song.Song()
                         metadata = mutagen.File(thing[0] +"/"+ possibleMusicFile)
-                        print("metadata:\t",metadata)
+                        # print("metadata:\t",metadata)
                         # print(mutagen.File(self.musicFilesLocation + "/"+thing))
                         newSong.setFileName(possibleMusicFile)
                         # print("PATH OF FILE:\t",self.musicFilesLocation + "/")
@@ -146,6 +146,13 @@ class SortMusicFiles:
         criteriaByPriority = [self.firstSortingCriteria, self.secondSortingCriteria,
                               self.thirdSortingCriteria]
 
+        # since some files don't have album artist metadata, but nearly all have artist metadata, we're first trying
+        # to sort by album artist to prevent songs featuring other artists from being separated from the rest of
+        # an album produced without that featured artist
+        if (criteriaByPriority[priority] == "albumartist" and
+                (switchStatement[criteriaByPriority[priority]]() == "No albumartist info")):
+            print("No album artist info, using artist info instead")
+            return switchStatement["artist"]()
         return switchStatement[criteriaByPriority[priority]]()
 
     def moveSong(self, song):
@@ -168,7 +175,7 @@ class SortMusicFiles:
                 os.makedirs(destination)
                 shutil.move(currentLocation, destination)
         else:
-            print("Song Artist:\t",song.getArtist())
+            # print("Song Artist:\t",song.getArtist())
             currentLocation = song.getFileLocation() + song.getFileName()
             destination = (self.outputFilesLocation + "/" +
                            self.getSortingCriteriaDataByCriteriaPriority(song, 0) + "/" +
@@ -247,16 +254,23 @@ class SortMusicFiles:
         numSongs = len(self.Songs)
         onePercentOfNumSongs = (numSongs / 100) + 1 # add 1 to avoid divide by 0 errors
         counter = 0
-        print("Progress:\t",end="")
         print("Music Location:\t",self.getMusicFilesLocation())
         print("Output Location:\t",self.getOutputFilesLocation())
         print("songs:\t",self.Songs)
         print("Number of songs:\t", numSongs)
+        print("Progress:\t",end="")
         for song in self.Songs:
             if counter % onePercentOfNumSongs == 0:
                 print("-",end="")
             self.moveSong(song)
             counter += 1
+
+        self.cleanup()
+
+    def cleanup(self):
+        """Asks user if they want to remove empty directories, and does it if they wish"""
+        # TODO: prompt the user to decide this before running
+
 
     def removeBadSymbolsInPathName(self, path):
         """Removes symbols incompatible Windows's file system"""
@@ -279,9 +293,10 @@ s = SortMusicFiles()
 # for thing in os.walk("/mnt/c/Users/Ben/Music/Test OGG Music/Music/"):
 #     print(thing)
 
-s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
-s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
-
+# s.setMusicFilesLocation("/mnt/a/Music/OGG Music")
+# s.setOutputFilesLocation("/mnt/a/Music/testing")
+s.setMusicFilesLocation("/mnt/a/Music/sample music for testing")
+s.setOutputFilesLocation("/mnt/a/Music/testing")
 # s.setMusicFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing")
 # s.setOutputFilesLocation("/mnt/c/Users/Ben/Music/Test OGG Music/testing_output")
 
