@@ -26,17 +26,16 @@
     <splitter split-orientation="horizontal" split-proportion="0.6081277">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="sortMusicFiles.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="sortMusicFiles.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="278">
-                  <caret line="239" column="24" selection-start-line="239" selection-start-column="24" selection-end-line="239" selection-end-column="24" />
+                <state relative-caret-position="295">
+                  <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
                   <folding>
                     <element signature="e#5#42#0" expanded="true" />
                     <element signature="e#3631#3637#0" expanded="false" />
-                    <element signature="e#6750#12006#0" expanded="false" />
-                    <element signature="e#9121#9215#0" expanded="false" />
-                    <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
+                    <element signature="e#6752#12008#0" expanded="false" />
+                    <element signature="e#9123#9217#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -64,10 +63,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="song.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="song.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/song.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="363">
+                <state relative-caret-position="1179">
                   <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
                   <folding />
                 </state>
@@ -121,8 +120,8 @@
         <option value="$PROJECT_DIR$/test_sortMusic.py" />
         <option value="$PROJECT_DIR$/GUI_testing.py" />
         <option value="$PROJECT_DIR$/run_sorter.py" />
-        <option value="$PROJECT_DIR$/sortMusicFiles.py" />
         <option value="$PROJECT_DIR$/song.py" />
+        <option value="$PROJECT_DIR$/sortMusicFiles.py" />
       </list>
     </option>
   </component>
@@ -522,9 +521,8 @@
           <folding>
             <element signature="e#5#42#0" expanded="true" />
             <element signature="e#3631#3637#0" expanded="false" />
-            <element signature="e#6750#12006#0" expanded="false" />
-            <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
+            <element signature="e#6752#12008#0" expanded="false" />
+            <element signature="e#9123#9217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -572,9 +570,8 @@
           <folding>
             <element signature="e#5#42#0" expanded="true" />
             <element signature="e#3631#3637#0" expanded="false" />
-            <element signature="e#6750#12006#0" expanded="false" />
-            <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
+            <element signature="e#6752#12008#0" expanded="false" />
+            <element signature="e#9123#9217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -622,9 +619,8 @@
           <folding>
             <element signature="e#5#42#0" expanded="true" />
             <element signature="e#3631#3637#0" expanded="false" />
-            <element signature="e#6750#12006#0" expanded="false" />
-            <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
+            <element signature="e#6752#12008#0" expanded="false" />
+            <element signature="e#9123#9217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -664,9 +660,8 @@
           <folding>
             <element signature="e#5#42#0" expanded="true" />
             <element signature="e#3631#3637#0" expanded="false" />
-            <element signature="e#6750#12006#0" expanded="false" />
-            <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
+            <element signature="e#6752#12008#0" expanded="false" />
+            <element signature="e#9123#9217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -696,9 +691,8 @@
           <folding>
             <element signature="e#5#42#0" expanded="true" />
             <element signature="e#3631#3637#0" expanded="false" />
-            <element signature="e#6750#12006#0" expanded="false" />
-            <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
+            <element signature="e#6752#12008#0" expanded="false" />
+            <element signature="e#9123#9217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -728,9 +722,8 @@
           <folding>
             <element signature="e#5#42#0" expanded="true" />
             <element signature="e#3631#3637#0" expanded="false" />
-            <element signature="e#6750#12006#0" expanded="false" />
-            <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
+            <element signature="e#6752#12008#0" expanded="false" />
+            <element signature="e#9123#9217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -767,9 +760,8 @@
           <folding>
             <element signature="e#5#42#0" expanded="true" />
             <element signature="e#3631#3637#0" expanded="false" />
-            <element signature="e#6750#12006#0" expanded="false" />
-            <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
+            <element signature="e#6752#12008#0" expanded="false" />
+            <element signature="e#9123#9217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -835,25 +827,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
+    <entry file="file://$PROJECT_DIR$/song.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="239" column="24" selection-start-line="239" selection-start-column="24" selection-end-line="239" selection-end-column="24" />
-          <folding>
-            <element signature="e#5#42#0" expanded="true" />
-            <element signature="e#3631#3637#0" expanded="false" />
-            <element signature="e#6750#12006#0" expanded="false" />
-            <element signature="e#9121#9215#0" expanded="false" />
-            <marker date="1475957853555" expanded="false" signature="5074:6710" ph="..." />
-          </folding>
+        <state relative-caret-position="1179">
+          <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/song.py">
+    <entry file="file://$PROJECT_DIR$/sortMusicFiles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="295">
+          <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
+          <folding>
+            <element signature="e#5#42#0" expanded="true" />
+            <element signature="e#3631#3637#0" expanded="false" />
+            <element signature="e#6752#12008#0" expanded="false" />
+            <element signature="e#9123#9217#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

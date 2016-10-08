@@ -142,7 +142,7 @@ class SortMusicFiles:
         # an album produced without that featured artist
         if (criteriaByPriority[priority] == "albumartist" and
                 (switchStatement[criteriaByPriority[priority]]() == "No albumartist info")):
-            print("No album artist info, using artist info instead")
+            # print("No album artist info, using artist info instead")
             return switchStatement["artist"]()
         return switchStatement[criteriaByPriority[priority]]()
 
